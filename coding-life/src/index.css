@@ -1,0 +1,16 @@
+@config "../tailwind.config.js";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+video {
+    background: transparent;
+  }
+html, body {
+    font-family: monospace;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
