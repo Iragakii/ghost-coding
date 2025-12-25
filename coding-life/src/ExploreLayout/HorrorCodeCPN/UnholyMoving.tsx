@@ -1,5 +1,5 @@
 import { Canvas, extend } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,7 +11,7 @@ extend(THREE);
 function VideoPlane() {
   const meshRef = useRef<THREE.Mesh>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [videoReady, setVideoReady] = useState(false);
+
   
   useEffect(() => {
     const video = document.createElement("video");
@@ -57,8 +57,7 @@ function VideoPlane() {
     video.onloadedmetadata = () => {
       // Set initial frame immediately
       video.currentTime = 0;
-      setVideoReady(true);
-      
+
       // Direct currentTime animation - no proxy delay
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -69,7 +68,7 @@ function VideoPlane() {
           invalidateOnRefresh: true,
         },
       });
-      
+
       // Direct animation of video currentTime
       tl.to(video, {
         currentTime: video.duration,
